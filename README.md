@@ -7,7 +7,7 @@
 
 
 
-<img alt="gif-cell" src="https://github.com/fabricio-26/toDoList/blob/main/src/assets/Readme.png">
+<img alt="gif-cell" src="https://github.com/fabricio-26/toDoList/blob/main/src/assets/Banner1.png">
 
 
 ## 💻 Projeto
