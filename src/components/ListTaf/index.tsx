@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import { View, Text, TouchableOpacity } from "react-native";
 
 import Icon from "@expo/vector-icons/Feather";
@@ -8,30 +9,30 @@ import { styles } from "./styles";
 interface Tafs {
     description: string,
     onRemove: () => void,
-    contadorTafsConcluidas: () => void,
-    data: boolean
+    count: (arg1: string) => void,
 }
 
-export function ListTaf({ description, onRemove, contadorTafsConcluidas, data }: Tafs) {
+export function ListTaf({ description, onRemove, count }: Tafs) {
 
-    console.log(data)
+    const [icontrueOrFalse, setIcontrueOrFalse] = useState(false);
 
-
+    function enviarState() {
+        setIcontrueOrFalse(!icontrueOrFalse);
+        count(description);
+    }
     return (
         <View>
             <View style={styles.card}>
 
                 <TouchableOpacity style={styles.cardButton}
-                    onPress={contadorTafsConcluidas}
+                    onPress={enviarState}
                 >
 
 
-                     {data === true ?
+                     {icontrueOrFalse === true ?
                         (<Icon name="check-circle" size={24} color="#4EA8DE" />)
                         :
-                        (
-                            (<Icon name="circle" size={24} color="#4EA8DE" />)
-                        )} 
+                        (<Icon name="circle" size={24} color="#4EA8DE" />)} 
                 </TouchableOpacity>
                 <Text style={styles.cardText}>
                     {description}

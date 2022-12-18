@@ -17,18 +17,15 @@ export function Home() {
     const [countConcluidas, setCountConcluidas] = useState(0)
     const [listAll, setListAll] = useState<string[]>([])
 
-    const [icontrueOrFalse, setIcontrueOrFalse] = useState(true)
+    
 
     function contadorTafsConcluidas(item: string){
-
         if (listAll.includes(item)) {
             setListAll(full => full.filter(taf => taf !== item))
             setCountConcluidas(listAll.length - 1)
-            setIcontrueOrFalse(false)
         }else{
             setListAll(allTafs => [...allTafs, item])
             setCountConcluidas(listAll.length + 1)
-            setIcontrueOrFalse(true)
         }
     }
 
@@ -53,6 +50,8 @@ export function Home() {
                 onPress: () => {
                     setListFull(full => full.filter(taf => taf !== description))
                     setCount(listFull.length - 1)
+                    setCountConcluidas(listAll.length - 1)
+
                 }
             },
             {
@@ -108,7 +107,11 @@ export function Home() {
                     data={listFull}
                     keyExtractor={item => item}
                     renderItem={({ item }) => (
-                        <ListTaf description={item} data={icontrueOrFalse} onRemove={() => onRemove(item)} contadorTafsConcluidas={()=>contadorTafsConcluidas(item)} />
+                        <ListTaf 
+                        description={item} 
+                        onRemove={() => onRemove(item)} 
+                        count={contadorTafsConcluidas}
+                        />
                     )}
                     ListEmptyComponent={() => (
                         <View style={{ alignItems: 'center' }}>

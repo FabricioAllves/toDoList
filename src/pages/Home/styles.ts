@@ -28,12 +28,12 @@ export const styles = StyleSheet.create({
         borderWidth: 0,
         color: '#fff',
         shadowColor: "#000", shadowOffset: {
-            width: 100,
-            height: 100,
+            width: 5,
+            height: 5,
         },
         shadowOpacity: 1,
         shadowRadius: 3,
-        elevation: 12,
+        elevation: 1,
     },
     button: {
         width: 60,
