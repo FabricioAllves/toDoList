@@ -5,7 +5,9 @@
 </p>
 
 
-![cover](.github/Readme.png)
+
+
+<img alt="gif-cell" src="https://github.com/fabricio-26/toDoList/blob/main/src/assets/Readme.png">
 
 
 ## 💻 Projeto
