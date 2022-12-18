@@ -19,7 +19,7 @@ export function Home() {
 
     const [icontrueOrFalse, setIcontrueOrFalse] = useState(true)
 
-    function teste(item: string){
+    function contadorTafsConcluidas(item: string){
 
         if (listAll.includes(item)) {
             setListAll(full => full.filter(taf => taf !== item))
@@ -108,7 +108,7 @@ export function Home() {
                     data={listFull}
                     keyExtractor={item => item}
                     renderItem={({ item }) => (
-                        <ListTaf description={item} data={icontrueOrFalse} onRemove={() => onRemove(item)} teste={()=>teste(item)} />
+                        <ListTaf description={item} data={icontrueOrFalse} onRemove={() => onRemove(item)} contadorTafsConcluidas={()=>contadorTafsConcluidas(item)} />
                     )}
                     ListEmptyComponent={() => (
                         <View style={{ alignItems: 'center' }}>

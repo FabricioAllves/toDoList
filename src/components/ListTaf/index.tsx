@@ -8,11 +8,11 @@ import { styles } from "./styles";
 interface Tafs {
     description: string,
     onRemove: () => void,
-    teste: () => void,
+    contadorTafsConcluidas: () => void,
     data: boolean
 }
 
-export function ListTaf({ description, onRemove, teste, data }: Tafs) {
+export function ListTaf({ description, onRemove, contadorTafsConcluidas, data }: Tafs) {
 
     console.log(data)
 
@@ -22,7 +22,7 @@ export function ListTaf({ description, onRemove, teste, data }: Tafs) {
             <View style={styles.card}>
 
                 <TouchableOpacity style={styles.cardButton}
-                    onPress={teste}
+                    onPress={contadorTafsConcluidas}
                 >
 
 
