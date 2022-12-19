@@ -11,21 +11,20 @@ import { ListTaf } from "../../components/ListTaf";
 
 export function Home() {
     const [listFull, setListFull] = useState<string[]>([])
+    const [listAll, setListAll] = useState<string[]>([])
     const [taf, setTaf] = useState('')
     const [count, setCount] = useState(0)
-
     const [countConcluidas, setCountConcluidas] = useState(0)
-    const [listAll, setListAll] = useState<string[]>([])
-
-    
 
     function contadorTafsConcluidas(item: string){
         if (listAll.includes(item)) {
             setListAll(full => full.filter(taf => taf !== item))
             setCountConcluidas(listAll.length - 1)
+            console.log("Diminuiu: ", listAll)
         }else{
             setListAll(allTafs => [...allTafs, item])
             setCountConcluidas(listAll.length + 1)
+            console.log("Acrescentou : ",listAll)
         }
     }
 
@@ -43,15 +42,15 @@ export function Home() {
         Keyboard.dismiss()
     }
 
-    function onRemove(description: string) {
+    function onRemoveItem(description: string) {
         Alert.alert("Remover", `Remover esta tarefa?`, [
             {
                 text: 'Sim',
                 onPress: () => {
                     setListFull(full => full.filter(taf => taf !== description))
+                    setListAll(full => full.filter(taf => taf !== description))
                     setCount(listFull.length - 1)
-                    setCountConcluidas(listAll.length - 1)
-
+                    setCountConcluidas(listAll.length)
                 }
             },
             {
@@ -109,7 +108,7 @@ export function Home() {
                     renderItem={({ item }) => (
                         <ListTaf 
                         description={item} 
-                        onRemove={() => onRemove(item)} 
+                        onRemove={() => onRemoveItem(item)} 
                         count={contadorTafsConcluidas}
                         />
                     )}
