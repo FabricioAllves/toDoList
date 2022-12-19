@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-    View, Text, Image, TextInput, TouchableOpacity, FlatList, Alert,Keyboard
+    View, Text, Image, TextInput, TouchableOpacity, FlatList, Alert, Keyboard
 } from 'react-native'
 
 import logo from '../../assets/Logo.png'
@@ -16,15 +16,13 @@ export function Home() {
     const [count, setCount] = useState(0)
     const [countConcluidas, setCountConcluidas] = useState(0)
 
-    function contadorTafsConcluidas(item: string){
+    function contadorTafsConcluidas(item: string) {
         if (listAll.includes(item)) {
             setListAll(full => full.filter(taf => taf !== item))
             setCountConcluidas(listAll.length - 1)
-            console.log("Diminuiu: ", listAll)
-        }else{
+        } else {
             setListAll(allTafs => [...allTafs, item])
             setCountConcluidas(listAll.length + 1)
-            console.log("Acrescentou : ",listAll)
         }
     }
 
@@ -35,7 +33,7 @@ export function Home() {
         if (listFull.includes(taf)) {
             return Alert.alert("Esta tarefa já existe", "Adicione uma nova tarefa")
         }
-        
+
         setListFull(allTafs => [...allTafs, taf])
         setCount(listFull.length + 1)
         setTaf('')
@@ -59,7 +57,7 @@ export function Home() {
             }
         ])
     }
-    
+
 
     return (
         <>
@@ -106,10 +104,10 @@ export function Home() {
                     data={listFull}
                     keyExtractor={item => item}
                     renderItem={({ item }) => (
-                        <ListTaf 
-                        description={item} 
-                        onRemove={() => onRemoveItem(item)} 
-                        count={contadorTafsConcluidas}
+                        <ListTaf
+                            description={item}
+                            onRemove={() => onRemoveItem(item)}
+                            count={contadorTafsConcluidas}
                         />
                     )}
                     ListEmptyComponent={() => (
